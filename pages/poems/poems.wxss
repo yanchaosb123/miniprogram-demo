@@ -1,0 +1,12 @@
+/* pages/poems/poems.wxss */
+text.parent {
+ display: inline-block;
+ padding-left:20px;
+ background-color:green;
+}
+
+text.child {
+   display: inline-block;
+   padding-left:20rpx;
+   margin-left: 5rpx;
+}

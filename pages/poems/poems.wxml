@@ -1,0 +1,11 @@
+<!--pages/poems/poems.wxml-->
+<view class = 'group' >
+  <block wx:for ="{{bookCategory}}" wx:key="ID"  >
+    <text id="{{item.ID}}" bindtap="getBookChildCategory" class="parent" >{{item.DESCRIPTION}} </text>
+  </block>
+  <block wx:if="{{childCategory.length > 0 }}">
+    <block wx:for ="{{childCategory}}" wx:key="ID" >
+      <text id="{{item.ID}}" class="child" style= "margin-left:{{item.MARGIN_LEFT}}"> {{ item.DESCRIPTION }} </text>
+    </block>
+  </block>
+</view>
