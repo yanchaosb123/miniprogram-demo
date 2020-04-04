@@ -11,70 +11,28 @@ Page({
     childCategory: null
   },
 
-
-  caculateChildMarginLeft: function( childs ) {
-      if(!childs && !childs[0] ) return ;
-      let PADDING_LEFT = 20;
-      let WIDTH = 32;
-      let UNIT = PADDING_LEFT + WIDTH;
-      let parents = this.data.bookCategory;
-      let parentIndex = parents.findIndex( ele => ele.ID === childs[0].PARENT );
-      let parentMarginLeft =  * parentIndex + 20;
-
-      let len = childs.length;
-      let leftOverflow = false, rightOverflow = false;
-
-      // 如果偶数个
-      if( len%2 === 0 ) {
-      // 如果子类型 左边越界
-         if ( parentMarginLeft - (len/2 -1)*72 - 52 < 0 ) {
-           leftOverflow = true;
-         } 
-        if ( parentMarginLeft + (len / 2 - 1) * 72 + 104 > 750 ) {
-          rightOverflow = true;
-        }
-      }
-      let startMargin = null;
-      if(leftOverflow)  { 
-        startMargin = 0;
-      } else if (rightOverflow) {
-        startMargin = 750 - len * 72 + 20;
-      } else {
-
-      }
-      for( let i=0; i<childs.length; i++ ) {
-        childs[i].MARGIN_LEFT = startMargin + i * 72 + 'rpx';
-      }
-
-
-
-  },
-
-
-
 //
   getBookChildCategory: function (event) {
-    wx.request({
-      url: util.getServer() + '/bookCategory',
-      method: 'POST',
-      data: {
-        msg: 'getBookChildCategory',
-        parentId: event.target.id
-      },
+      wx.request({
+        url: util.getServer() + '/bookCategory',
+        method: 'POST',
+        data: {
+          msg: 'getBookChildCategory',
+          parentId: event.target.id
+        },
 
-      success: (res) => {
-        if (res.data.resultSuccess) {
-          this.caculateChildMarginLeft(res.data.resultData);          
-          this.setData({
-            'childCategory': res.data.resultData
-          });
+        success: (res) => {
+          if (res.data.resultSuccess) {
+            this.caculateChildMarginLeft(res.data.resultData);          
+            this.setData({
+              'childCategory': res.data.resultData
+            });
+
+          }
+        },
+        fail: () => {
 
         }
-      },
-      fail: () => {
-
-      }
-
     });
   },
 
@@ -83,17 +41,12 @@ Page({
    */
   onLoad: function (options) {
         wx.request({
-          url: util.getServer() + '/bookCategory',
-          method: 'POST',
-          data: {
-            msg: 'getBookCategory'
-          },
-     
+          url: util.getServer() + '/book/category',
+          method: 'GET',
           success: (res) => {
-            if (res.data.resultSuccess) { 
-              this.setData({
-                'bookCategory': res.data.resultData
-              });
+            if (res.statusCode === 200) {
+              this.setData({bookCategory: res.data})
+              console.log(res.data)
             }
           },
           fail: () => {

@@ -1,0 +1,27 @@
+{
+  "name": "zhaodemo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yanchaosb123/miniprogram-demo.git"
+  },
+  "keywords": [
+    "wechat",
+    "mini-program"
+  ],
+  "author": "davidstark",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yanchaosb123/miniprogram-demo/issues"
+  },
+  "homepage": "https://github.com/yanchaosb123/miniprogram-demo#readme",
+  "dependencies": {
+    "miniprogram-sm-crypto": "^0.1.0",
+    "weui-miniprogram": "^0.2.2"
+  }
+}
