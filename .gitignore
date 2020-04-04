@@ -1,3 +1,4 @@
 miniprogram_npm/
-node_modules/
-
+node_modules/jsbn/
+node_modules/miniprogram-sm-crypto/
+node_modules/weui-miniprogram/miniprogram_dist

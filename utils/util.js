@@ -19,11 +19,8 @@ const getServer = () => {
   return  getApp().globalData.isDevMode ? getApp().globalData.devModeServer : proModeServer; 
 }
 
-
-
 module.exports = {
   formatTime: formatTime,
   formatNumber: formatNumber,
-  getServer: getServer
-   
+  getServer: getServer   
 }

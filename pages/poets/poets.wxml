@@ -1,6 +1,7 @@
 <!--pages/poets.wxml-->
 <view class="page">
     <view class="page__bd">
-        <mp-searchbar bindselectresult="selectResult" search="{{search}}"></mp-searchbar>
+        <mp-searchbar bindselectresult="selectResult" search="{{search}}"
+         searchResult="{{searchResult}}"></mp-searchbar>
     </view>
 </view>
