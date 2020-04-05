@@ -17,7 +17,7 @@
 		"nodeModules": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.0.4",
+	"libVersion": "2.9.5",
 	"appid": "wx4f86210a0060529f",
 	"projectname": "ZhaoDemo",
 	"isGameTourist": false,

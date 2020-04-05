@@ -52,6 +52,13 @@ Page({
 	},
 	selectResult: function (e) {
 	    console.log('select result', e.detail)
+	    wx.navigateTo({
+	      url: '/pages/poems/poems?poetId=' + e.detail.item.id + '&poemCount=' + e.detail.item.poemCount,
+	      events:{},
+	      success: function (res) {
+		      res.eventChannel.emit('accepetDataFromOpenerPage',{data: 'test' })
+	      }
+	    })
 	},
 	onShow: function() {
 		this.initPage()

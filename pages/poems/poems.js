@@ -7,53 +7,60 @@ Page({
    * 页面的初始数据
    */
   data: {
-    bookCategory: null,
-    childCategory: null
+    hello: 'world',
+    list: [
+      {
+          id: 'poetLife',
+          name: '诗人生平',
+          open: false
+      },
+      {
+          id : 'poetWorks',
+          name: '诗人作品',
+          open: false
+      }
+
+     ]
+  },
+  kindToggle: function(e) {
+    var id = e.currentTarget.id, list = this.data.list;
+    for (var i = 0, len = list.length; i < len; ++i) {
+        if (list[i].id == id) {
+            list[i].open = !list[i].open
+        } else {
+            list[i].open = false
+        }
+    }
+    this.setData({
+        list: list
+    });
   },
 
-//
-  getBookChildCategory: function (event) {
-      wx.request({
-        url: util.getServer() + '/bookCategory',
-        method: 'POST',
-        data: {
-          msg: 'getBookChildCategory',
-          parentId: event.target.id
-        },
-
-        success: (res) => {
-          if (res.data.resultSuccess) {
-            this.caculateChildMarginLeft(res.data.resultData);          
-            this.setData({
-              'childCategory': res.data.resultData
-            });
-
-          }
-        },
-        fail: () => {
-
+  initPage: function (poetId) {
+    wx.request({
+      url: util.getServer() + '/poems/query',
+      data: {
+        'poetId': poetId
+      },
+      method: 'GET',
+      success: (res) => {
+        console.log(res.data, "haha", this)
+        if (res.data.code == 200) {
+          this.setData({...res.data.data})
         }
-    });
+        console.log(this.data)
+      }
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-        wx.request({
-          url: util.getServer() + '/book/category',
-          method: 'GET',
-          success: (res) => {
-            if (res.statusCode === 200) {
-              this.setData({bookCategory: res.data})
-              console.log(res.data)
-            }
-          },
-          fail: () => {
-
-          }
-
-        });
+     this.setData({
+         initPage: this.initPage.bind(this)
+     });
+     this.initPage(options.poetId);
   },
 
   /**
@@ -67,14 +74,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-      this.onLoad();
+    
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-      this.setData({'childCategory': null})
+    
   },
 
   /**

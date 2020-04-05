@@ -3,7 +3,8 @@
 		"pages/index/index",
 		"pages/logs/logs",
 		"pages/poems/poems",
-		"pages/poets/poets"
+		"pages/poets/poets",
+		"pages/poems/poem-detail/poem-detail"
 	],
 	"window": {
 		"backgroundTextStyle": "light",
@@ -21,18 +22,14 @@
 				"pagePath": "pages/logs/logs",
 				"text": "日志"
 			},
-      {
+			{
 				"pagePath": "pages/poets/poets",
 				"text": "诗人"
 			}
 		]
-  },
-  "tt": 			{
-    "pagePath": "pages/poems/poems",
-    "text": "诗词"
-  },
+	},
 	"networkTimeout": {
-		"request": 10000,
+		"request": 3000,
 		"downloadFile": 10000
 	},
 	"debug": true,

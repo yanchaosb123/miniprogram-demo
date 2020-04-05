@@ -16,7 +16,8 @@ const formatNumber = n => {
 
 
 const getServer = () => {
-  return  getApp().globalData.isDevMode ? getApp().globalData.devModeServer : proModeServer; 
+  let data = getApp().globalData;
+  return  data.isDevMode ? data.devModeServer : data.proModeServer; 
 }
 
 module.exports = {
