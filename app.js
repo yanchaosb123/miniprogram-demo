@@ -36,10 +36,10 @@ App({
 
   globalData: {
     userInfo: null,
-    isDevMode: true,
+    isDevMode: false,
    
     devModeServer: 'http://192.168.1.2:8082',
-    proModeServer: 'http://39.104.160.13'
+    proModeServer: 'http://39.104.160.13:8080/poetry-web'
   }
   //  devModeServer: 'http://localhost:8082',
 })

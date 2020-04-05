@@ -1,4 +1,6 @@
 // pages/poems/poem-detail.js
+const util = require('../../../utils/util.js')
+
 Page({
 
 	/**
@@ -12,7 +14,26 @@ Page({
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
+            this.setData({
+		initPage: this.initPage.bind(this)
+	    });
+	    this.initPage(options.poemId)
+	},
 
+	initPage: function(poemId) {
+	  wx.request({
+	    url: util.getServer() + '/poems/poem',
+	    method: 'GET',
+	    data: {
+		    poemId: poemId
+	    },
+	    success: (res) => {
+		    if (res.data.code == 200) {
+			 let poem = res.data.data;
+			 this.setData({poem: poem})   
+		    }
+	    }
+	  })   
 	},
 
 	/**

@@ -17,6 +17,7 @@ Page({
 		initPage: this.initPage.bind(this)
 	    });
 	    console.log("poets page  load")
+	    this.initPage()
 	},
 
 	initPage: function() {

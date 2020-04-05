@@ -21,7 +21,7 @@
             
                             <block wx:for="{{poems}}" wx:for-item="poem" wx:key="id">
                                                        
-                                  <navigator url="../../pages/poems/poem-detail/poem-detail"   class="weui-cell weui-cell_access"
+                                  <navigator url="../../pages/poems/poem-detail/poem-detail?poemId={{poem.id}}"   class="weui-cell weui-cell_access"
                                      >
                                       <view class="weui-cell__bd">{{poem.title}}</view>
                                       <view class="weui-cell__ft weui-cell__ft_in-access"></view>
